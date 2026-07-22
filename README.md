@@ -5,15 +5,22 @@ Static marketing site for InMail Engine, imported from the Claude Design project
 
 ## Pages
 
-| Page | File | Status |
-|---|---|---|
-| Home | `index.html` | ✅ Implemented |
-| Why Us? | `why-us.html` | Not yet built |
-| Case Studies | `case-studies.html` | Not yet built |
-| ROI Calculator | `calculator.html` | Not yet built |
-| Privacy Policy | `privacy-policy.html` | Not yet built |
-| Terms of Service | `terms-of-service.html` | Not yet built |
-| Thank You | `thank-you.html` | Not yet built |
+| Page | File |
+|---|---|
+| Home | `index.html` |
+| Why Us? | `why-us.html` |
+| Case Studies | `case-studies.html` |
+| Case Study: Go-CyberSide | `case-go-cyberside.html` |
+| Case Study: Voice.ai | `case-voiceai.html` |
+| Case Study: BrineIQ | `case-brineiq.html` |
+| ROI Calculator | `calculator.html` |
+| Privacy Policy | `privacy-policy.html` |
+| Terms of Service | `terms-of-service.html` |
+| Thank You (post-booking) | `thank-you.html` |
+
+Shared styles and behaviour live in `assets/site.css` and `assets/site.js`.
+Case-study screenshots (BrineIQ LinkedIn threads, Go-CyberSide Slack/tweet)
+live in `assets/case-studies/`.
 
 ## Running locally
 

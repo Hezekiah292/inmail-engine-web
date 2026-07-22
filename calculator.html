@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Warm Introductions Calculator — InMail Engine</title>
+<meta name="description" content="See how we turn LinkedIn outreach into 20–30 warm investor introductions — and capital raised. Model your raise with real campaign data.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  input[type="range"].wi-slider {
+    -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: 3px;
+    background: linear-gradient(90deg, #e9e5f5, #d4c8f0); outline: none; margin: 10px 0 6px;
+  }
+  input[type="range"].wi-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border-radius: 50%;
+    background: linear-gradient(135deg, #9b7ed8, #7c5cbf); cursor: pointer; border: none;
+    box-shadow: 0 2px 8px rgba(124,92,191,0.4); transition: transform 0.2s;
+  }
+  input[type="range"].wi-slider::-webkit-slider-thumb:hover { transform: scale(1.1); }
+  input[type="range"].wi-slider::-moz-range-thumb {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: linear-gradient(135deg, #9b7ed8, #7c5cbf); cursor: pointer; border: none;
+    box-shadow: 0 2px 8px rgba(124,92,191,0.4); transition: transform 0.2s;
+  }
+  input[type="range"].wi-slider::-moz-range-thumb:hover { transform: scale(1.1); }
+  .wi-input { width: 100%; background: #ffffff; border: 1px solid #e5e2f0; border-radius: 12px; padding: 14px 16px; font-size: 15px; font-family: 'Inter', sans-serif; color: #2a2438; transition: border-color 0.2s, box-shadow 0.2s; }
+  .wi-input:focus { border-color: #9b7ed8 !important; box-shadow: 0 0 0 3px rgba(155,126,216,0.15) !important; outline: none; }
+  .wi-metric { background: linear-gradient(135deg, #faf9fd, #f5f3fa); border: 1px solid #e9e5f5; border-radius: 12px; padding: 14px 18px; }
+  .wi-pill { background: linear-gradient(135deg, #f5f0ff, #ebe3fc); border: 1px solid #d9d0ed; color: #7c5cbf; border-radius: 999px; padding: 4px 12px; font-size: 13px; font-weight: 700; font-family: 'SF Mono', Monaco, monospace; }
+  .wi-summary-cell { background: #ffffff; border: 1px solid #e9e5f5; border-radius: 12px; padding: 20px 14px; text-align: center; transition: transform 0.2s; }
+  .wi-summary-cell:hover { transform: translateY(-2px); }
+  @media (max-width: 640px) {
+    .wi-card { padding: 24px !important; }
+    .wi-summary-grid { grid-template-columns: 1fr !important; }
+    .wi-logo-strip { flex-wrap: wrap !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="ie-nav">
+  <div class="ie-nav-inner">
+    <a href="index.html" class="ie-logo">
+      <span class="ie-logo-mark">IE</span>
+      <span style="font-weight: 800; font-size: 16px; letter-spacing: -0.01em">InMail Engine</span>
+    </a>
+    <div class="ie-nav-links">
+      <a href="index.html" class="ie-nav-link">Home</a>
+      <a href="why-us.html" class="ie-nav-link">Why Us?</a>
+      <a href="case-studies.html" class="ie-nav-link">Case Studies</a>
+      <a href="calculator.html" class="ie-nav-link active">ROI Calculator</a>
+    </div>
+    <a href="https://calendly.com/inmailengine/funding-fit-audit-with-hezekiah" target="_blank" rel="noopener" class="ie-btn-nav">Book a Demo</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div style="background: linear-gradient(135deg, #667eea 0%, #9b7ed8 50%, #a855f7 100%); color: #ffffff; text-align: center; padding: 64px 24px">
+  <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(8px); border-radius: 999px; padding: 8px 18px; font-size: 13px; font-weight: 600; letter-spacing: 0.02em">
+    <span style="font-size: 14px">&#9889;</span>
+    <span>LinkedIn Outbound on Steroids</span>
+  </div>
+  <h1 class="ie-hero-h1" style="font-size: 48px; font-weight: 800; margin: 20px 0 12px; letter-spacing: -0.02em">Warm Introductions Calculator</h1>
+  <p style="color: rgba(255,255,255,0.8); font-size: 17px; max-width: 640px; margin: 0 auto; line-height: 1.6">See how we turn LinkedIn outreach into 20–30 warm investor introductions — and capital raised</p>
+</div>
+
+<div style="max-width: 1100px; margin: 0 auto; padding: 0 24px">
+
+  <!-- CREDIBILITY BANNER -->
+  <div style="background: linear-gradient(135deg, #faf8ff, #f3eeff); border-left: 4px solid #7c5cbf; border-radius: 12px; padding: 24px 28px; margin: 32px auto 0; max-width: 900px">
+    <div style="display: flex; gap: 16px; align-items: flex-start">
+      <div style="flex: 0 0 auto; width: 36px; height: 36px; border-radius: 50%; background: #7c5cbf; color: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700">&#10003;</div>
+      <div>
+        <div style="font-weight: 700; font-size: 16px; margin-bottom: 6px">Based on Real Data &amp; Results</div>
+        <div style="font-size: 14px; line-height: 1.65; color: #5a5270">These projections come from real campaigns — $70M+ raised for clients, 7,000+ qualified investor meetings, and a 95% success rate. We've booked calls with Morgan Stanley, Amazon, Nike, Acrisure &amp; Yelp for our clients.</div>
+      </div>
+    </div>
+    <div class="wi-logo-strip" style="display: flex; gap: 12px; margin-top: 18px; justify-content: space-between">
+      <div style="flex: 1; min-width: 120px; background: #ffffff; border: 1px solid #e9e5f5; border-radius: 10px; padding: 12px 8px; text-align: center; font-size: 13px; font-weight: 600; color: #9a94ab; filter: grayscale(1)">Morgan Stanley</div>
+      <div style="flex: 1; min-width: 120px; background: #ffffff; border: 1px solid #e9e5f5; border-radius: 10px; padding: 12px 8px; text-align: center; font-size: 13px; font-weight: 600; color: #9a94ab; filter: grayscale(1)">Amazon</div>
+      <div style="flex: 1; min-width: 120px; background: #ffffff; border: 1px solid #e9e5f5; border-radius: 10px; padding: 12px 8px; text-align: center; font-size: 13px; font-weight: 600; color: #9a94ab; filter: grayscale(1)">Nike</div>
+      <div style="flex: 1; min-width: 120px; background: #ffffff; border: 1px solid #e9e5f5; border-radius: 10px; padding: 12px 8px; text-align: center; font-size: 13px; font-weight: 600; color: #9a94ab; filter: grayscale(1)">Acrisure</div>
+      <div style="flex: 1; min-width: 120px; background: #ffffff; border: 1px solid #e9e5f5; border-radius: 10px; padding: 12px 8px; text-align: center; font-size: 13px; font-weight: 600; color: #9a94ab; filter: grayscale(1)">Yelp</div>
+    </div>
+  </div>
+
+  <!-- CALCULATOR HEADER -->
+  <div style="text-align: center; margin: 48px 0 28px">
+    <div class="ie-badge"><span>&#128425;</span><span>ROI CALCULATOR</span></div>
+    <h2 style="font-size: 32px; font-weight: 800; margin: 14px 0 8px; letter-spacing: -0.01em">Calculate Your Raise</h2>
+    <p style="color: #6f6885; font-size: 15px; margin: 0">Model how warm-path outreach converts into introductions and committed capital</p>
+  </div>
+
+  <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px">
+
+    <!-- CARD 01 -->
+    <div class="wi-card ie-card" style="padding: 32px">
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 24px">
+        <div style="width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, #9b7ed8, #7c5cbf); color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px">01</div>
+        <div>
+          <div style="font-weight: 700; font-size: 18px">Outreach Setup &amp; Response Rates</div>
+          <div style="font-size: 13px; color: #8a8299">Configure your warm-path outreach</div>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 22px">
+        <div>
+          <label style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px" for="wi-volume">LinkedIn Voice Messages Volume</label>
+          <select class="wi-input" id="wi-volume" style="cursor: pointer">
+            <option value="0" selected>Please select</option>
+            <option value="10000">10,000 LinkedIn Voice Messages / mo</option>
+            <option value="20000">20,000 LinkedIn Voice Messages / mo</option>
+            <option value="60000">60,000 LinkedIn Voice Messages / mo</option>
+          </select>
+        </div>
+
+        <div>
+          <label style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px" for="wi-mpc">Messages Per Contact</label>
+          <input class="wi-input" id="wi-mpc" type="number" min="1" max="10" step="1" value="1">
+          <div style="font-size: 12px; color: #9a94ab; font-style: italic; margin-top: 6px">How many messages each warm path receives</div>
+        </div>
+
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center">
+            <label style="font-size: 14px; font-weight: 600" for="wi-reply">Reply Rate</label>
+            <span class="wi-pill" id="wi-reply-label">5.0%</span>
+          </div>
+          <input type="range" class="wi-slider" id="wi-reply" min="2.5" max="25" step="0.5" value="5">
+          <div style="display: flex; justify-content: space-between; font-size: 12px; color: #9a94ab">
+            <span>2.5%</span><span>25%</span>
+          </div>
+        </div>
+
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center">
+            <label style="font-size: 14px; font-weight: 600" for="wi-posreply">Positive Reply Rate</label>
+            <span class="wi-pill" id="wi-posreply-label">40%</span>
+          </div>
+          <input type="range" class="wi-slider" id="wi-posreply" min="25" max="75" step="1" value="40">
+          <div style="display: flex; justify-content: space-between; font-size: 12px; color: #9a94ab">
+            <span>25%</span><span>75%</span>
+          </div>
+        </div>
+
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center">
+            <label style="font-size: 14px; font-weight: 600" for="wi-agreed">Agreed to a Call Rate</label>
+            <span class="wi-pill" id="wi-agreed-label">40%</span>
+          </div>
+          <input type="range" class="wi-slider" id="wi-agreed" min="10" max="80" step="1" value="40">
+          <div style="display: flex; justify-content: space-between; font-size: 12px; color: #9a94ab">
+            <span>10%</span><span>80%</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="border-top: 1px solid #efecf7; margin-top: 26px; padding-top: 20px">
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #9a94ab; margin-bottom: 12px">CALCULATED METRICS</div>
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <div class="wi-metric">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
+              <span style="font-size: 14px; font-weight: 500">Warm Paths Contacted /mo</span>
+              <span style="font-family: 'SF Mono', Monaco, monospace; font-size: 20px; font-weight: 700" id="wi-contacted">—</span>
+            </div>
+            <div style="font-size: 11px; font-style: italic; color: #9a94ab; margin-top: 2px">= Voice messages ÷ Messages per contact</div>
+          </div>
+          <div class="wi-metric">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
+              <span style="font-size: 14px; font-weight: 500">Total Replies</span>
+              <span style="font-family: 'SF Mono', Monaco, monospace; font-size: 20px; font-weight: 700" id="wi-replies">—</span>
+            </div>
+            <div style="font-size: 11px; font-style: italic; color: #9a94ab; margin-top: 2px">= Warm paths contacted × Reply rate</div>
+          </div>
+          <div class="wi-metric">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
+              <span style="font-size: 14px; font-weight: 500">Positive Replies</span>
+              <span style="font-family: 'SF Mono', Monaco, monospace; font-size: 20px; font-weight: 700" id="wi-posreplies">—</span>
+            </div>
+            <div style="font-size: 11px; font-style: italic; color: #9a94ab; margin-top: 2px">= Total replies × Positive reply rate</div>
+          </div>
+          <div class="wi-metric">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
+              <span style="font-size: 14px; font-weight: 500">Agreed to a Call</span>
+              <span style="font-family: 'SF Mono', Monaco, monospace; font-size: 20px; font-weight: 700; color: #7c5cbf" id="wi-agreedcount">—</span>
+            </div>
+            <div style="font-size: 11px; font-style: italic; color: #9a94ab; margin-top: 2px">= Positive replies × Agreed to a call rate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 02 -->
+    <div class="wi-card ie-card" style="padding: 32px">
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 24px">
+        <div style="width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, #9b7ed8, #7c5cbf); color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px">02</div>
+        <div>
+          <div style="font-weight: 700; font-size: 18px">Conversion &amp; Results</div>
+          <div style="font-size: 13px; color: #8a8299">From calls to warm introductions to capital</div>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px">
+        <div>
+          <label style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px" for="wi-pickup">Phone Pickup Rate</label>
+          <div style="position: relative">
+            <input class="wi-input" id="wi-pickup" type="number" min="0" max="100" step="1" value="25" style="padding-right: 42px">
+            <span style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: #9a94ab; font-size: 14px; font-weight: 600; pointer-events: none">%</span>
+          </div>
+        </div>
+        <div>
+          <label style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px" for="wi-introrate">Call → Warm Intro Rate</label>
+          <div style="position: relative">
+            <input class="wi-input" id="wi-introrate" type="number" min="0" max="100" step="1" value="20" style="padding-right: 42px">
+            <span style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: #9a94ab; font-size: 14px; font-weight: 600; pointer-events: none">%</span>
+          </div>
+          <div style="font-size: 12px; color: #9a94ab; font-style: italic; margin-top: 6px">% of investor calls that turn into a warm introduction</div>
+        </div>
+        <div>
+          <label style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px" for="wi-closerate">Warm Intro → Close Rate</label>
+          <div style="position: relative">
+            <input class="wi-input" id="wi-closerate" type="number" min="0" max="100" step="1" value="15" style="padding-right: 42px">
+            <span style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: #9a94ab; font-size: 14px; font-weight: 600; pointer-events: none">%</span>
+          </div>
+          <div style="font-size: 12px; color: #9a94ab; font-style: italic; margin-top: 6px">% of warm introductions that commit capital</div>
+        </div>
+        <div>
+          <label style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px" for="wi-checksize">Average Check Size</label>
+          <div style="position: relative">
+            <span style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #9a94ab; font-size: 14px; font-weight: 600; pointer-events: none">$</span>
+            <input class="wi-input" id="wi-checksize" type="number" min="0" step="5000" value="100000" style="padding-left: 34px">
+          </div>
+        </div>
+      </div>
+
+      <div style="border-top: 1px solid #efecf7; margin-top: 26px; padding-top: 20px">
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #9a94ab; margin-bottom: 12px">RESULTS</div>
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <div class="wi-metric">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
+              <span style="font-size: 14px; font-weight: 500">Calls Booked</span>
+              <span style="font-family: 'SF Mono', Monaco, monospace; font-size: 20px; font-weight: 700" id="wi-callsbooked">—</span>
+            </div>
+            <div style="font-size: 11px; font-style: italic; color: #9a94ab; margin-top: 2px">= Agreed to a call × Phone pickup rate</div>
+          </div>
+          <div class="wi-metric">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
+              <span style="font-size: 14px; font-weight: 600">Warm Introductions</span>
+              <span style="font-family: 'SF Mono', Monaco, monospace; font-size: 24px; font-weight: 700; color: #7c5cbf" id="wi-warmintros">—</span>
+            </div>
+            <div style="font-size: 11px; font-style: italic; color: #9a94ab; margin-top: 2px">= Calls booked × Intro conversion rate</div>
+          </div>
+          <div class="wi-metric">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
+              <span style="font-size: 14px; font-weight: 500">Investors Committed</span>
+              <span style="font-family: 'SF Mono', Monaco, monospace; font-size: 20px; font-weight: 700" id="wi-committed">—</span>
+            </div>
+            <div style="font-size: 11px; font-style: italic; color: #9a94ab; margin-top: 2px">= Warm introductions × Close rate</div>
+          </div>
+          <div class="wi-metric">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
+              <span style="font-size: 14px; font-weight: 600">Projected Capital Raised</span>
+              <span style="font-family: 'SF Mono', Monaco, monospace; font-size: 22px; font-weight: 700; color: #7c5cbf" id="wi-capital">—</span>
+            </div>
+            <div style="font-size: 11px; font-style: italic; color: #9a94ab; margin-top: 2px">= Investors committed × Average check size</div>
+          </div>
+          <div class="wi-metric">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
+              <span style="font-size: 14px; font-weight: 500">Agency Cost /mo</span>
+              <span style="font-family: 'SF Mono', Monaco, monospace; font-size: 20px; font-weight: 700" id="wi-agencycost">—</span>
+            </div>
+            <div style="font-size: 11px; font-style: italic; color: #9a94ab; margin-top: 2px">= Tech fee + per-call fee</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="wi-card" style="background: linear-gradient(135deg, #f0ecfa, #e9e3f7); border: 1px solid #d9d0ed; border-radius: 16px; padding: 36px 32px">
+      <div style="text-align: center; margin-bottom: 26px">
+        <h2 style="font-size: 26px; font-weight: 800; margin: 0 0 6px">Your Projected Outcome</h2>
+        <p style="color: #6f6885; font-size: 14px; margin: 0">What this campaign produces each month</p>
+      </div>
+      <div class="wi-summary-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px">
+        <div class="wi-summary-cell">
+          <div style="font-size: 12px; font-weight: 600; color: #8a8299; margin-bottom: 8px">Warm Paths Contacted</div>
+          <div style="font-family: 'SF Mono', Monaco, monospace; font-size: 22px; font-weight: 700" id="wi-s-contacted">—</div>
+        </div>
+        <div class="wi-summary-cell">
+          <div style="font-size: 12px; font-weight: 600; color: #8a8299; margin-bottom: 8px">Calls Booked</div>
+          <div style="font-family: 'SF Mono', Monaco, monospace; font-size: 22px; font-weight: 700" id="wi-s-callsbooked">—</div>
+        </div>
+        <div class="wi-summary-cell">
+          <div style="font-size: 12px; font-weight: 600; color: #8a8299; margin-bottom: 8px">Warm Introductions</div>
+          <div style="font-family: 'SF Mono', Monaco, monospace; font-size: 22px; font-weight: 700; color: #7c5cbf" id="wi-s-warmintros">—</div>
+        </div>
+        <div class="wi-summary-cell">
+          <div style="font-size: 12px; font-weight: 600; color: #8a8299; margin-bottom: 8px">Investors Committed</div>
+          <div style="font-family: 'SF Mono', Monaco, monospace; font-size: 22px; font-weight: 700" id="wi-s-committed">—</div>
+        </div>
+        <div class="wi-summary-cell">
+          <div style="font-size: 12px; font-weight: 600; color: #8a8299; margin-bottom: 8px">Capital Raised</div>
+          <div style="font-family: 'SF Mono', Monaco, monospace; font-size: 28px; font-weight: 800; color: #7c5cbf" id="wi-s-capital">—</div>
+        </div>
+        <div class="wi-summary-cell">
+          <div style="font-size: 12px; font-weight: 600; color: #8a8299; margin-bottom: 8px">Cost Per Warm Intro</div>
+          <div style="font-family: 'SF Mono', Monaco, monospace; font-size: 22px; font-weight: 700" id="wi-s-costperintro">—</div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: center; gap: 10px; background: #ffffff; border: 1px solid #d9d0ed; border-radius: 12px; padding: 16px 20px; margin-top: 18px">
+        <span style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #9b7ed8, #7c5cbf); color: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 13px; flex: 0 0 auto">&#10003;</span>
+        <span style="font-weight: 700; font-size: 14px; text-align: center">Our guarantee: raise up to $1M — or close $30k+ in deal flow — in the next month, or 75% back.</span>
+      </div>
+    </div>
+
+    <div style="text-align: center; font-size: 13px; color: #9a94ab; padding-bottom: 8px">Adjust the parameters above to model different scenarios.</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer style="background: #2a2438; color: #ffffff; margin-top: 64px">
+  <div style="max-width: 1100px; margin: 0 auto; padding: 48px 24px 28px">
+    <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between">
+      <div style="max-width: 320px">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px">
+          <span class="ie-logo-mark">IE</span>
+          <span style="font-weight: 800; font-size: 16px">InMail Engine</span>
+        </div>
+        <div style="font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6">LinkedIn outbound on steroids. Warm introductions to your dream investors, customers, and companies — booked directly from LinkedIn.</div>
+      </div>
+      <div>
+        <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: rgba(255,255,255,0.5); margin-bottom: 12px">PAGES</div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <a href="index.html" class="ie-footer-link">Home</a>
+          <a href="why-us.html" class="ie-footer-link">Why Us?</a>
+          <a href="case-studies.html" class="ie-footer-link">Case Studies</a>
+          <a href="calculator.html" class="ie-footer-link">ROI Calculator</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: rgba(255,255,255,0.5); margin-bottom: 12px">LEGAL</div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <a href="privacy-policy.html" class="ie-footer-link">Privacy Policy</a>
+          <a href="terms-of-service.html" class="ie-footer-link">Terms of Service</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: rgba(255,255,255,0.5); margin-bottom: 12px">CONTACT</div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <a href="mailto:info@inmailengine.com" class="ie-footer-link">info@inmailengine.com</a>
+          <a href="https://calendly.com/inmailengine/funding-fit-audit-with-hezekiah" target="_blank" rel="noopener" class="ie-footer-cta">Check if you're fundable — or sellable →</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top: 1px solid rgba(255,255,255,0.12); margin-top: 36px; padding-top: 20px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.45)">
+      <span>© 2026 InMail Engine. All rights reserved.</span>
+      <span>Raise up to $1M — or close $30k+ in deal flow — in the next month, or 75% back.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script>
+(function () {
+  var PACKAGE_COST = { 10000: 1240, 20000: 2390, 60000: 7240 };
+  var PER_CALL_FEE = 300;
+  var DASH = '—';
+
+  function $(id) { return document.getElementById(id); }
+  function fmtNum(n) { return n.toLocaleString('en-US'); }
+  function fmtCur(n) {
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n);
+  }
+  function clampInt(v, min, max) {
+    var n = Math.floor(Number(v));
+    if (isNaN(n)) return min;
+    return Math.min(max, Math.max(min, n));
+  }
+
+  function update() {
+    var volume = Number($('wi-volume').value);
+    var mpc = clampInt($('wi-mpc').value, 1, 10);
+    var replyRate = Number($('wi-reply').value);
+    var posReplyRate = Number($('wi-posreply').value);
+    var agreedRate = Number($('wi-agreed').value);
+    var pickupRate = clampInt($('wi-pickup').value, 0, 100);
+    var introRate = clampInt($('wi-introrate').value, 0, 100);
+    var closeRate = clampInt($('wi-closerate').value, 0, 100);
+    var checkSize = Math.max(0, Number($('wi-checksize').value) || 0);
+
+    $('wi-reply-label').textContent = replyRate.toFixed(1) + '%';
+    $('wi-posreply-label').textContent = Math.round(posReplyRate) + '%';
+    $('wi-agreed-label').textContent = Math.round(agreedRate) + '%';
+
+    var selected = volume > 0;
+    var contacted = 0, replies = 0, posReplies = 0, agreed = 0, callsBooked = 0,
+        warmIntros = 0, committed = 0, capital = 0, agencyCost = 0;
+    var costPerIntro = DASH;
+
+    if (selected) {
+      contacted = Math.floor(volume / mpc);
+      replies = Math.floor(contacted * replyRate / 100);
+      posReplies = Math.floor(replies * posReplyRate / 100);
+      agreed = Math.floor(posReplies * agreedRate / 100);
+      callsBooked = Math.floor(agreed * pickupRate / 100);
+      warmIntros = Math.floor(callsBooked * introRate / 100);
+      committed = Math.floor(warmIntros * closeRate / 100);
+      capital = committed * checkSize;
+      agencyCost = (PACKAGE_COST[volume] || 0) + callsBooked * PER_CALL_FEE;
+      costPerIntro = warmIntros > 0 ? fmtCur(agencyCost / warmIntros) : DASH;
+    }
+
+    $('wi-contacted').textContent = selected ? fmtNum(contacted) : DASH;
+    $('wi-replies').textContent = selected ? fmtNum(replies) : DASH;
+    $('wi-posreplies').textContent = selected ? fmtNum(posReplies) : DASH;
+    $('wi-agreedcount').textContent = selected ? fmtNum(agreed) : DASH;
+    $('wi-callsbooked').textContent = selected ? fmtNum(callsBooked) : DASH;
+    $('wi-warmintros').textContent = selected ? fmtNum(warmIntros) : DASH;
+    $('wi-committed').textContent = selected ? fmtNum(committed) : DASH;
+    $('wi-capital').textContent = selected ? fmtCur(capital) : DASH;
+    $('wi-agencycost').textContent = selected ? fmtCur(agencyCost) : DASH;
+
+    $('wi-s-contacted').textContent = selected ? fmtNum(contacted) : DASH;
+    $('wi-s-callsbooked').textContent = selected ? fmtNum(callsBooked) : DASH;
+    $('wi-s-warmintros').textContent = selected ? fmtNum(warmIntros) : DASH;
+    $('wi-s-committed').textContent = selected ? fmtNum(committed) : DASH;
+    $('wi-s-capital').textContent = selected ? fmtCur(capital) : DASH;
+    $('wi-s-costperintro').textContent = costPerIntro;
+  }
+
+  ['wi-volume', 'wi-mpc', 'wi-reply', 'wi-posreply', 'wi-agreed', 'wi-pickup', 'wi-introrate', 'wi-closerate', 'wi-checksize']
+    .forEach(function (id) {
+      $(id).addEventListener('input', update);
+      $(id).addEventListener('change', update);
+    });
+  update();
+})();
+</script>
+</body>
+</html>
